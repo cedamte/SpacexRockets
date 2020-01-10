@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="rocketName"
+            type="String" />
+
+        <variable
+            name="rocketCountry"
+            type="String" />
+
+        <variable
+            name="rocketEngineCount"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_rocket_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{rocketName}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_rocket_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{rocketCountry}"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_name" />
+
+        <TextView
+            android:id="@+id/tv_rocket_engine_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{rocketEngineCount}"
+            app:layout_constraintTop_toBottomOf="@id/tv_rocket_country" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
