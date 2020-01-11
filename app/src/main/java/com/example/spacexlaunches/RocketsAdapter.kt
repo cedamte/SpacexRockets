@@ -27,6 +27,14 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
         holder.binding.rocketName = rockets[position].engines.number.toString()
     }
 
+    fun setData(data: List<Rockets>) {
+        data.let {
+            rockets.clear()
+            rockets.addAll(data)
+            notifyDataSetChanged()
+        }
+    }
+
 
     class ViewHolder(itemView: ViewRocketsBinding) :
         RecyclerView.ViewHolder(itemView.root) {
