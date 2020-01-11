@@ -23,8 +23,8 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.rocketName = rockets[position].rocketName
-        holder.binding.rocketName = rockets[position].country
-        holder.binding.rocketName = rockets[position].engines.number.toString()
+        holder.binding.rocketCountry = rockets[position].country
+        holder.binding.rocketEngineCount = rockets[position].engines.number.toString()
     }
 
     fun setData(data: List<Rockets>) {
