@@ -10,22 +10,21 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class RocketsRepo {
-    private val rocketsService: RocketsService
+class RocketsRepo(private val rocketsService: RocketsService) {
 
 
-    init {
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-
-
-        rocketsService = retrofit.create(
-            RocketsService::class.java
-        )
-    }
+//    init {
+//        val retrofit: Retrofit = Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .build()
+//
+//
+//        rocketsService = retrofit.create(
+//            RocketsService::class.java
+//        )
+//    }
 
     fun getRocketData(): Single<List<Rockets>> {
         return rocketsService.getRocketsData()

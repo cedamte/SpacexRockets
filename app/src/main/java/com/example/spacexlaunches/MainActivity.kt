@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacexlaunches.data.Rockets
+import com.example.spacexlaunches.di.ApplicationModule
+import com.example.spacexlaunches.di.DaggerAppComponent
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,10 +27,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @Inject
+    lateinit var rocketsViewModelFactory: RocketsViewModelFactory
+    private lateinit var viewModel: RocketsViewModel
+
+
     private val mRockets = mutableListOf<Rockets>()
     private val mRocketsAdapter = RocketsAdapter(mRockets)
     private var mShowActive: Boolean = false
-    lateinit var viewModel: RocketsViewModel
+
 
     private val mPrefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
@@ -45,6 +53,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DaggerAppComponent.builder()
+            .applicationModule(ApplicationModule(application))
+            .build()
+            .inject(this)
+
         val recyclerView: RecyclerView = findViewById(R.id.rv_rocket_list)
 
 
@@ -54,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = mRocketsAdapter
 
 
-        viewModel = ViewModelProviders.of(this)
+        viewModel = ViewModelProviders.of(this, rocketsViewModelFactory)
             .get(RocketsViewModel::class.java)
 
         viewModel.getData()
@@ -72,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                     .show()
 
             })
+
 
         // Register an OnSharedPreferenceChangeListener
         val prefs = PreferenceManager
