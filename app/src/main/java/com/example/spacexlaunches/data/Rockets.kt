@@ -1,6 +1,7 @@
 package com.example.spacexlaunches.data
 
 
+import androidx.annotation.Nullable
 import com.google.gson.annotations.SerializedName
 
 data class Rockets(
@@ -17,9 +18,9 @@ data class Rockets(
     @SerializedName("description")
     val description: String,
     @SerializedName("engines")
-    val engines: Engines,
+    val engines: Engines?,
     @SerializedName("flickr_images")
-    val flickrImages: List<String>,
+    val flickrImages: List<String>?,
     @SerializedName("rocket_id")
     val rocketId: String,
     @SerializedName("rocket_name")

@@ -25,7 +25,7 @@ class RocketsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.rocketName = rockets[position].rocketName
         holder.binding.rocketCountry = rockets[position].country
-        holder.binding.rocketEngineCount = rockets[position].engines.number.toString()
+        holder.binding.rocketEngineCount = rockets[position].engines?.number.toString()
     }
 
 
