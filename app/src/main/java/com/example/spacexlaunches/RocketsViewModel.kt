@@ -11,8 +11,6 @@ class RocketsViewModel(
     private val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
 
-    //    private val data: RocketsRepo = RocketsRepo()
-//    private val compositeDisposable = CompositeDisposable()
     val rocketsRepoObservable: MutableLiveData<List<Rockets>> = MutableLiveData()
     val errorMessage: MutableLiveData<String> = MutableLiveData()
 

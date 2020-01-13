@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spacexlaunches.data.Rockets
 import com.example.spacexlaunches.di.ApplicationModule
 import com.example.spacexlaunches.di.DaggerAppComponent
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -52,19 +53,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupRecyclerView()
 
         DaggerAppComponent.builder()
             .applicationModule(ApplicationModule(application))
             .build()
             .inject(this)
-
-        val recyclerView: RecyclerView = findViewById(R.id.rv_rocket_list)
-
-
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerView.adapter = mRocketsAdapter
 
 
         viewModel = ViewModelProviders.of(this, rocketsViewModelFactory)
@@ -115,6 +109,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private fun setupRecyclerView() {
+        rv_rocket_list.layoutManager = LinearLayoutManager(this)
+        rv_rocket_list.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rv_rocket_list.adapter = mRocketsAdapter
+
+    }
 
     private fun setRockets(rockets: List<Rockets>) {
         updatePreferences()
