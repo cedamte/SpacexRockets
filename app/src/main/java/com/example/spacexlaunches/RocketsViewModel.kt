@@ -9,16 +9,21 @@ import io.reactivex.disposables.CompositeDisposable
 class RocketsViewModel : ViewModel() {
 
     private val data: RocketsRepo = RocketsRepo()
-    private val compositeDisposable= CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
     val rocketsRepoObservable: MutableLiveData<List<Rockets>> = MutableLiveData()
+    val errorMessage: MutableLiveData<String> = MutableLiveData()
 
 
     fun getData() {
         compositeDisposable.add(
             data.getRocketData()
-                .subscribe { listOfRockets ->
+                .subscribe({ listOfRockets ->
                     rocketsRepoObservable.value = listOfRockets
+                }, { error ->
+                    errorMessage.value = error.message
+                    error.printStackTrace()
                 }
+                )
         )
     }
 

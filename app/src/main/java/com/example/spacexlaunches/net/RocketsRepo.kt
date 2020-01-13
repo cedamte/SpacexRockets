@@ -15,8 +15,6 @@ class RocketsRepo {
 
 
     init {
-
-
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
