@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spacexlaunches.data.Rockets
 import com.example.spacexlaunches.databinding.ViewRocketsBinding
 
-class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
+class RocketsAdapter(
+    private val rockets: MutableList<Rockets>
+) : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
 
-    private val rockets = mutableListOf<Rockets>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ViewRocketsBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -25,14 +26,6 @@ class RocketsAdapter : RecyclerView.Adapter<RocketsAdapter.ViewHolder>() {
         holder.binding.rocketName = rockets[position].rocketName
         holder.binding.rocketCountry = rockets[position].country
         holder.binding.rocketEngineCount = rockets[position].engines.number.toString()
-    }
-
-    fun setData(data: List<Rockets>) {
-        data.let {
-            rockets.clear()
-            rockets.addAll(data)
-            notifyDataSetChanged()
-        }
     }
 
 

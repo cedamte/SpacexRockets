@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SpaceXLaunches</string>
+    <string name="menu_setting">Setting</string>
+    <string name="show_active_rockets">Show only active Rockets</string>
 </resources>

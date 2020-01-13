@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:key="PREF_SHOW_ACTIVE"
+        android:defaultValue="false"
+        android:summary="Only Active Rockets"
+        android:title="@string/show_active_rockets" />
+</PreferenceScreen>
