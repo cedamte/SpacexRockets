@@ -85,6 +85,10 @@ class MainActivity : AppCompatActivity() {
         val prefs = PreferenceManager
             .getDefaultSharedPreferences(baseContext)
         prefs.registerOnSharedPreferenceChangeListener(mPrefListener)
+
+
+        Toast.makeText(this, "Welcome to Spacex Launches App", Toast.LENGTH_LONG)
+            .show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -111,7 +115,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         rv_rocket_list.layoutManager = LinearLayoutManager(this)
-        rv_rocket_list.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rv_rocket_list.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         rv_rocket_list.adapter = mRocketsAdapter
 
     }
